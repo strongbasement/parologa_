@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, intial-scale=1,shrink-to-fit=no">
+    <title>பரலோக ராஜ்யத்தின் திறவுகோல்</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+
+    <section id="top">    
+        <h1 id="heading1"><img src="images/prtlogo1.png" alt="" id="prtlogo1" width=""></h1>
+    </section>
+
+    <section id="middle"> 
+        <img src="images/paraloga.jpg" alt="thiravukol image" id="paralogaimg" width="">
+    </section>
+
+<section>
+    <div class="myform">
+
+        <form id="myform" name="submit-to-google-sheet">
+           
+            <h1 id="coni">தொடர்பு</h1>
+            
+            
+            <div class="flexer">
+                
+                <input type="text" id="name" name="name" placeholder="உங்கள் பெயர்">
+            
+            </div>
+            <div class="flexer">
+                
+                <input type="tel" id="mobile" name="mobile" placeholder="உங்கள் மொபைல் எண்">
+           
+            </div>
+            <div class="flexer">
+                
+                <input type="email" id="email" name="email" placeholder="உங்கள் மின்னஞ்சல்">
+           
+            </div>
+            <div class="flexer">
+                
+                <textarea id="message" cols="30" rows="5" name="message" placeholder="உங்கள் தகவல்"></textarea>
+            
+            </div>
+            <div class="flexer"><input type="submit" value="அனுப்பு" id="butt"></div>
+            
+        </form>
+    </div>
+</section>
+
+
+<section>
+    <h1>தொடர்புகள்</h1>
+
+    <ul>
+    <li>அலைபேசி எண்:<a href="tel:9710840092"><br>9710840092</a></li>    
+    <li>மின்னஞ்சல் முகவரி:<a href="mailto:paralogarajiyathinthiruvukol@gmail.com"><br>paralogarajiyathinthiruvukol@gmail.com</a></li></ul>
+    <div class="flex">
+        <div id="i1">    
+            <a href="https://www.youtube.com/@paralogarajiyathinthiravukol"><img src="images/youtubelogo/youtubelogo.png" alt="youtube link" class="socimg"></a>    
+        </div>
+    <div id="i2">
+       <a href="https://wa.me/919710840092"><img src="images/whatsapplogo/whatsapp.png" alt="youtube link" class="socimg"></a> 
+    
+    </div>
+    
+</div>
+
+    <!--li-->
+</section>
+
+
+
+
+<script>
+     const scriptURL = 'https://script.google.com/macros/s/AKfycbxXs0Fh-oaP5YDRdxAoQdRo1sT8kKMdZcEX7d9COI8SkoaErKklknw1ths6VfhMs-1G/exec'
+    const form = document.forms['submit-to-google-sheet']
+  
+
+//secret recipe
+
+const myphone=document.querySelector('#mobile');
+const myname=document.querySelector('#name');
+      const mymail=document.querySelector('#email');
+      const err=document.querySelector('#error');
+        form.addEventListener('submit', e => {
+            let mess='';
+            if(myname.value.length<3)
+            {
+              mess+='பெயரில் இரண்டு எழுத்துகளுக்கு மேல் இருக்க வேண்டும்';
+                alert(mess);
+                location.href="#myform";
+            } 
+            else if(myphone.value.length<4){
+                mess+='தவறான மொபைல் எண்';
+                alert(mess);
+                location.href="#myform";
+
+
+
+            }
+            else
+            {
+                document.querySelector('#butt').setAttribute("disabled", "disabled");
+                e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+            alert("எல்லா புகழும் இயேசு கிறிஸ்துவுக்கே, உங்கள் செய்தி பெறப்பட்டது, நன்றி");
+            document.querySelector('#butt').value="செய்தி பெறப்பட்டது";
+            }
+        
+        });
+
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+<script src="js/index.js"></script>
+</body>
+</html>
